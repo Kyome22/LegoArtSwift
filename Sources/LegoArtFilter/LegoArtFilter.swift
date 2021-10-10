@@ -111,9 +111,26 @@ public class LegoArt {
             let x = (i % w) * studPixelWidth + 1
             let y = (q - i / w) * studPixelWidth + 1
             let u = studPixelWidth - 2
-            let path = NSBezierPath(ovalIn: NSRect(x: x, y: y, width: u, height: u))
-            NSColor(colorMap[i].color).setFill()
-            path.fill()
+            
+            switch studType {
+            case .round, .roundPlate:
+                let path = NSBezierPath(ovalIn: NSRect(x: x, y: y, width: u, height: u))
+                NSColor(colorMap[i].color).setFill()
+                path.fill()
+            case .square, .squarePlate:
+                let path = NSBezierPath(roundedRect: NSRect(x: x, y: y, width: u, height: u),
+                                    xRadius: 1, yRadius: 1)
+                NSColor(colorMap[i].color).setFill()
+                path.fill()
+            }
+            if studType == .round || studType == .square {
+                let v = 0.6 * CGFloat(u)
+                let r = 0.5 * (CGFloat(u) - v)
+                let rect = NSRect(x: CGFloat(x) + r, y: CGFloat(y) + r, width: v, height: v)
+                let path = NSBezierPath(ovalIn: rect)
+                NSColor(colorMap[i].color).blended(withFraction: 0.7, of: NSColor.white)?.setFill()
+                path.fill()
+            }
         }
         image.unlockFocus()
         return image
