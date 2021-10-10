@@ -105,9 +105,11 @@ public class LegoArt {
         let bgRect = NSBezierPath(rect: NSRect(origin: .zero, size: size))
         backgroundColor.setFill()
         bgRect.fill()
+        
+        let q = colorMap.count / w
         for i in (0 ..< colorMap.count) {
             let x = (i % w) * studPixelWidth + 1
-            let y = (i / w) * studPixelWidth + 1
+            let y = (q - i / w) * studPixelWidth + 1
             let u = studPixelWidth - 2
             let path = NSBezierPath(ovalIn: NSRect(x: x, y: y, width: u, height: u))
             NSColor(colorMap[i].color).setFill()
