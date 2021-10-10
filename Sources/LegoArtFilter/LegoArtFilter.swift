@@ -118,8 +118,7 @@ public class LegoArt {
                 NSColor(colorMap[i].color).setFill()
                 path.fill()
             case .square, .squarePlate:
-                let path = NSBezierPath(roundedRect: NSRect(x: x, y: y, width: u, height: u),
-                                    xRadius: 1, yRadius: 1)
+                let path = NSBezierPath(rect: NSRect(x: x, y: y, width: u, height: u))
                 NSColor(colorMap[i].color).setFill()
                 path.fill()
             }
@@ -128,7 +127,14 @@ public class LegoArt {
                 let r = 0.5 * (u - v)
                 let rect = NSRect(x: CGFloat(x) + r, y: CGFloat(y) + r, width: v, height: v)
                 let path = NSBezierPath(ovalIn: rect)
-                NSColor(colorMap[i].color).blended(withFraction: 0.05, of: NSColor.black)?.setFill()
+                if let blendedColor = NSColor(colorMap[i].color)
+                    .blended(withFraction: 0.05, of: NSColor.black) {
+                    if colorMap[i] == .transClear {
+                        blendedColor.withAlphaComponent(0.3).setFill()
+                    } else {
+                        blendedColor.setFill()
+                    }
+                }
                 path.fill()
             }
         }
