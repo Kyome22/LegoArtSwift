@@ -128,9 +128,9 @@ public class LegoArt {
                 let rect = NSRect(x: CGFloat(x) + r, y: CGFloat(y) + r, width: v, height: v)
                 let path = NSBezierPath(ovalIn: rect)
                 if let blendedColor = NSColor(colorMap[i].color)
-                    .blended(withFraction: 0.05, of: NSColor.black) {
+                    .blended(withFraction: 0.1, of: NSColor.gray) {
                     if colorMap[i] == .transClear {
-                        blendedColor.withAlphaComponent(0.3).setFill()
+                        blendedColor.withAlphaComponent(0.1).setFill()
                     } else {
                         blendedColor.setFill()
                     }
