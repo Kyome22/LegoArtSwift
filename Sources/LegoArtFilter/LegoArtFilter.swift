@@ -123,7 +123,7 @@ public class LegoArt {
                 path.fill()
             }
             if studType == .round || studType == .square {
-                let v = 0.7 * u
+                let v = 0.64 * u
                 let r = 0.5 * (u - v)
                 let rect = NSRect(x: CGFloat(x) + r, y: CGFloat(y) + r, width: v, height: v)
                 let path = NSBezierPath(ovalIn: rect)
