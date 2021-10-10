@@ -106,7 +106,7 @@ public class LegoArt {
         backgroundColor.setFill()
         bgRect.fill()
         
-        let q = colorMap.count / w
+        let q = colorMap.count / w - 1
         for i in (0 ..< colorMap.count) {
             let x = (i % w) * studPixelWidth + 1
             let y = (q - i / w) * studPixelWidth + 1
