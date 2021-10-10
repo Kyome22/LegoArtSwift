@@ -128,8 +128,7 @@ public class LegoArt {
                 let r = 0.5 * (u - v)
                 let rect = NSRect(x: CGFloat(x) + r, y: CGFloat(y) + r, width: v, height: v)
                 let path = NSBezierPath(ovalIn: rect)
-                let overColor = NSColor(white: 0.92, alpha: 1)
-                NSColor(colorMap[i].color).blended(withFraction: 0.1, of: overColor)?.setFill()
+                NSColor(colorMap[i].color).blended(withFraction: 0.05, of: NSColor.black)?.setFill()
                 path.fill()
             }
         }
