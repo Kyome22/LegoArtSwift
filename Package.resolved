@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "LegoColors",
+        "repositoryURL": "https://github.com/Kyome22/LegoColors",
+        "state": {
+          "branch": "main",
+          "revision": "1a3dec64a8b9cbed9a88a917761ff00ac3c794a4",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
