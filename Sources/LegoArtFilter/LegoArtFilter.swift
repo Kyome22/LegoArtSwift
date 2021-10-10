@@ -98,8 +98,8 @@ public class LegoArt {
     public func exportNSImage(backgroundColor: NSColor = .black) -> NSImage? {
         let w = horizontalStudCount
         let h = colorMap.count / horizontalStudCount
-        let size = NSSize(width: studPixelWidth * w,
-                          height: studPixelWidth * h)
+        let size = NSSize(width: (studPixelWidth + 1) * w - 1,
+                          height: (studPixelWidth + 1) * h - 1)
         let image = NSImage(size: size)
         image.lockFocus()
         let bgRect = NSBezierPath(rect: NSRect(origin: .zero, size: size))
@@ -107,10 +107,10 @@ public class LegoArt {
         bgRect.fill()
         
         let q = colorMap.count / w - 1
+        let u = CGFloat(studPixelWidth)
         for i in (0 ..< colorMap.count) {
-            let x = (i % w) * studPixelWidth + 1
-            let y = (q - i / w) * studPixelWidth + 1
-            let u = studPixelWidth - 2
+            let x = CGFloat(i % w) * (u + 1)
+            let y = CGFloat(q - i / w) * (u + 1)
             
             switch studType {
             case .round, .roundPlate:
@@ -124,11 +124,12 @@ public class LegoArt {
                 path.fill()
             }
             if studType == .round || studType == .square {
-                let v = 0.6 * CGFloat(u)
-                let r = 0.5 * (CGFloat(u) - v)
+                let v = 0.7 * u
+                let r = 0.5 * (u - v)
                 let rect = NSRect(x: CGFloat(x) + r, y: CGFloat(y) + r, width: v, height: v)
                 let path = NSBezierPath(ovalIn: rect)
-                NSColor(colorMap[i].color).blended(withFraction: 0.1, of: NSColor.white)?.setFill()
+                let overColor = NSColor(white: 0.92, alpha: 1)
+                NSColor(colorMap[i].color).blended(withFraction: 0.1, of: overColor)?.setFill()
                 path.fill()
             }
         }
