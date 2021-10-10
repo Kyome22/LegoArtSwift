@@ -82,8 +82,8 @@ public class LegoArt {
             let r = CGFloat(data[4 * i]) / 255.0
             let g = CGFloat(data[4 * i + 1]) / 255.0
             let b = CGFloat(data[4 * i + 2]) / 255.0
-            // let a = CGFloat(data[4 * i + 3]) / 255.0
-            return LegoColor(r: r, g: g, b: b)
+            let a = CGFloat(data[4 * i + 3]) / 255.0
+            return LegoColor(r: r, g: g, b: b, a: a)
         }
         return (colorMap, Int(size.width))
     }
