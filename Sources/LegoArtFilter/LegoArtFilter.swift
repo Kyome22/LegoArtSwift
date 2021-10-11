@@ -79,17 +79,17 @@ public class LegoArt {
         let context = CIContext(options: nil)
         guard let resizedImage = ciImage.resizeAffine(maxStud: maxStud),
               let cgImage = context.createCGImage(resizedImage, from: resizedImage.extent),
-              let pixelData = cgImage.dataProvider?.data
+              let pixelData = cgImage.rgbData
         else { return ([], 0) }
-        let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
         let size = resizedImage.extent.size
-        let colorMap = (0 ..< Int(size.width * size.height)).map { i -> LegoColor in
-            let r = CGFloat(data[4 * i]) / 255.0
-            let g = CGFloat(data[4 * i + 1]) / 255.0
-            let b = CGFloat(data[4 * i + 2]) / 255.0
-            let a = CGFloat(data[4 * i + 3]) / 255.0
-            return LegoColor(r: r, g: g, b: b, a: a)
-        }
+        let colorMap = (0 ..< Int(size.width * size.height))
+            .map { i -> LegoColor in
+                let r = CGFloat(pixelData[4 * i]) / 255.0
+                let g = CGFloat(pixelData[4 * i + 1]) / 255.0
+                let b = CGFloat(pixelData[4 * i + 2]) / 255.0
+                let a = CGFloat(pixelData[4 * i + 3]) / 255.0
+                return LegoColor(r: r, g: g, b: b, a: a)
+            }
         return (colorMap, Int(size.width))
     }
     
