@@ -88,14 +88,54 @@ public class LegoArt {
         return (colorMap, Int(size.width))
     }
     
-//        #if canImport(UIKit)
-//        public var uiImage: UIImage? {
-//            return nil
-//        }
-//        #endif
+    #if canImport(UIKit)
+    public func exportUIImage() -> UIImage? {
+        let w = horizontalStudCount
+        let h = colorMap.count / horizontalStudCount
+        let size = CGSize(width: (studPixelWidth + 1) * w - 1,
+                          height: (studPixelWidth + 1) * h - 1)
+        
+        return UIGraphicsImageRenderer(size: size).image { _ in
+            let bgRect = UIBezierPath(rect: CGRect(origin: .zero, size: size))
+            UIColor.black.setFill()
+            bgRect.fill()
+            
+            let u = CGFloat(studPixelWidth)
+            for i in (0 ..< colorMap.count) {
+                let x = CGFloat(i % w) * (u + 1)
+                let y = CGFloat(i / w) * (u + 1)
+                
+                switch studType {
+                case .round, .roundPlate:
+                    let path = UIBezierPath(ovalIn: CGRect(x: x, y: y, width: u, height: u))
+                    UIColor(colorMap[i].color).setFill()
+                    path.fill()
+                case .square, .squarePlate:
+                    let path = UIBezierPath(rect: CGRect(x: x, y: y, width: u, height: u))
+                    UIColor(colorMap[i].color).setFill()
+                    path.fill()
+                }
+                if studType == .round || studType == .square {
+                    let v = 0.64 * u
+                    let r = 0.5 * (u - v)
+                    let rect = CGRect(x: CGFloat(x) + r, y: CGFloat(y) + r, width: v, height: v)
+                    let path = UIBezierPath(ovalIn: rect)
+                    let blendedColor = UIColor(colorMap[i].color)
+                        .blended(withFraction: 0.2, of: UIColor.black)
+                    if colorMap[i] == .transClear {
+                        blendedColor.withAlphaComponent(0.1).setFill()
+                    } else {
+                        blendedColor.withAlphaComponent(0.6).setFill()
+                    }
+                    path.fill()
+                }
+            }
+        }
+    }
+    #endif
     
     #if canImport(AppKit)
-    public func exportNSImage(backgroundColor: NSColor = .black) -> NSImage? {
+    public func exportNSImage() -> NSImage? {
         let w = horizontalStudCount
         let h = colorMap.count / horizontalStudCount
         let size = NSSize(width: (studPixelWidth + 1) * w - 1,
@@ -103,7 +143,7 @@ public class LegoArt {
         let image = NSImage(size: size)
         image.lockFocus()
         let bgRect = NSBezierPath(rect: NSRect(origin: .zero, size: size))
-        backgroundColor.setFill()
+        NSColor.black.setFill()
         bgRect.fill()
         
         let q = colorMap.count / w - 1
