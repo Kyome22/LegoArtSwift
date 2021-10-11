@@ -45,7 +45,12 @@ public class LegoArt {
         maxStud: Int = 48,
         studPixelWidth: Int = 10
     ) {
-        guard let ciImage = uiImage.ciImage else { return nil }
+        let correctUIImage = UIGraphicsImageRenderer(size: uiImage.size)
+            .image(actions: { _ in
+                uiImage.draw(at: .zero)
+            })
+        guard let cgImage = correctUIImage.cgImage else { return nil }
+        let ciImage = CIImage(cgImage: cgImage)
         self.init(ciImage: ciImage,
                   studType: studType,
                   maxStud: maxStud,
@@ -90,6 +95,7 @@ public class LegoArt {
     
     #if canImport(UIKit)
     public func exportUIImage() -> UIImage? {
+        if colorMap.isEmpty { return nil }
         let w = horizontalStudCount
         let h = colorMap.count / horizontalStudCount
         let size = CGSize(width: (studPixelWidth + 1) * w - 1,
@@ -136,6 +142,7 @@ public class LegoArt {
     
     #if canImport(AppKit)
     public func exportNSImage() -> NSImage? {
+        if colorMap.isEmpty { return nil }
         let w = horizontalStudCount
         let h = colorMap.count / horizontalStudCount
         let size = NSSize(width: (studPixelWidth + 1) * w - 1,
