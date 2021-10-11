@@ -5,6 +5,7 @@
 //  Created by Takuto Nakamura on 2021/10/12.
 //
 
+#if canImport(UIKit)
 import UIKit.UIColor
 
 extension UIColor {
@@ -21,3 +22,4 @@ extension UIColor {
                        alpha: fraction * (a2 - a1) + a1)
     }
 }
+#endif
