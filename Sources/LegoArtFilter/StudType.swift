@@ -12,4 +12,13 @@ public enum StudType: Int {
     case roundPlate
     case square
     case squarePlate
+    
+    public var label: String {
+        switch self {
+        case .round:       return "Round"
+        case .roundPlate:  return "Round Plate"
+        case .square:      return "Square"
+        case .squarePlate: return "Square Plate"
+        }
+    }
 }
