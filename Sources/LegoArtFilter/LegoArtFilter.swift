@@ -126,10 +126,11 @@ public class LegoArt {
         cgContext.fill(rect)
         
         // draw studs
+        let q = colorMap.count / w - 1
         let u = CGFloat(studPixelWidth)
         for i in (0 ..< colorMap.count) {
             let x = CGFloat(i % w) * (u + 1)
-            let y = CGFloat(i / w) * (u + 1)
+            let y = CGFloat(q - i / w) * (u + 1)
             let c = colorMap[i].cgColor
             switch studType {
             case .round, .roundPlate:
