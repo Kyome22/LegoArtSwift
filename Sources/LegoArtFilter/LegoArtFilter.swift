@@ -14,7 +14,7 @@ import UIKit
 import AppKit
 #endif
 
-public let CGBlack = CGColor(gray: 1.0, alpha: 1.0)
+public let LegoBlack = LegoColor.black.cgColor
 
 public class LegoArt {
     let studType: StudType
@@ -26,7 +26,7 @@ public class LegoArt {
     
     public init?(
         ciImage: CIImage,
-        baseColor: CGColor = CGBlack,
+        baseColor: CGColor = LegoBlack,
         studType: StudType = .round,
         maxStud: Int = 48,
         studPixelWidth: Int = 10
@@ -47,7 +47,7 @@ public class LegoArt {
     #if canImport(UIKit)
     public convenience init?(
         from uiImage: UIImage,
-        baseColor: CGColor = CGBlack,
+        baseColor: CGColor = LegoBlack,
         studType: StudType = .round,
         maxStud: Int = 48,
         studPixelWidth: Int = 10
@@ -68,7 +68,7 @@ public class LegoArt {
     #elseif canImport(AppKit)
     public convenience init?(
         from nsImage: NSImage,
-        baseColor: CGColor = .black,
+        baseColor: CGColor = LegoBlack,
         studType: StudType = .round,
         maxStud: Int = 48,
         studPixelWidth: Int = 10
@@ -121,7 +121,8 @@ public class LegoArt {
                                         bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)
         else { return nil }
         // fill black
-        cgContext.setFillColor(CGBlack)
+        let cgBlack = CGColor(gray: 0, alpha: 1)
+        cgContext.setFillColor(cgBlack)
         cgContext.fill(rect)
         
         // draw studs
@@ -140,7 +141,7 @@ public class LegoArt {
             }
             if studType == .round || studType == .square {
                 let alpha: CGFloat = (colorMap[i] == .transClear) ? 0.1 : 0.6
-                if let bc = c.blended(CGBlack, fraction: 0.2, alpha: alpha) {
+                if let bc = c.blended(cgBlack, fraction: 0.2, alpha: alpha) {
                     cgContext.setFillColor(bc)
                     let v = 0.64 * u
                     let r = 0.5 * (u - v)
@@ -149,7 +150,7 @@ public class LegoArt {
                 }
             }
         }
-
+        
         return cgContext.makeImage()
     }
     
