@@ -89,8 +89,7 @@ public class LegoArt {
         baseColor: CGColor,
         maxStud: Int
     ) -> ([LegoColor], Int) {
-        guard let correctImage = ciImage.correctImage(baseColor),
-              let resizedImage = CIImage(cgImage: correctImage).resizeAffine(maxStud: maxStud),
+        guard let resizedImage = ciImage.resizeAffine(maxStud: maxStud),
               let rgbaData = resizedImage.rgbaData(baseColor: baseColor)
         else { return ([], 0) }
         let size = resizedImage.extent.size
