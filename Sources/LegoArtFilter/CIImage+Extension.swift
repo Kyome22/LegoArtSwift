@@ -43,6 +43,6 @@ extension CIImage {
         if rect.width == 0 || rect.height == 0 { return nil }
         let scale = CGFloat(maxStud) / max(rect.width, rect.height)
         let transform = CGAffineTransform(scaleX: scale, y: scale)
-        return self.transformed(by: transform)
+        return self.transformed(by: transform).settingAlphaOne(in: rect)
     }
 }
