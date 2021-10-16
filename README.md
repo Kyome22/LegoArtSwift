@@ -1,6 +1,6 @@
 # LegoArtFilter
 
-Generates an image that looks like LEGO Art.
+Generates an image that looks like LEGO Art.<br/>
 This library supports both iOS (14≤) and macOS (11≤).
 
 ## Usage

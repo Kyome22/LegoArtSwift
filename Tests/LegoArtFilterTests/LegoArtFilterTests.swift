@@ -38,33 +38,3 @@ final class LegoArtFilterTests: XCTestCase {
         XCTAssertEqual(cgImage!.width, (48 * 11 - 1))
     }
 }
-
-// Get CGImage from CIImage
-let input = CIImage()
-if let legoArt = LegoArt(ciImage: input) {
-    let output = legoArt.exportCGImage()
-}
-
-// Get UIImage from UIImage
-let input = UIImage()
-if let legoArt = LegoArt(from: input) {
-    let output = legoArt.exportUIImage()
-}
-
-// Get NSImage from NSImage
-let input = NSImage()
-if let legoArt = LegoArt(from: input) {
-    let output = legoArt.exportNSImage()
-}
-
-// Use the options
-// baseColor:      It is used as a base for transparent images such as PNG.
-// StudType:       It is reflected in the appearance of the brick.
-//                 (round/roud plate/square/square plate)
-// maxStud:        Determines the maximum bricks number of the generated image.
-// studPixelWidth: Specifies the pixel width of the actual brick to be drawn.
-let legoArt = LegoArt(ciImage: CIImage,
-                      baseColor: CGColor,
-                      studType: StudType,
-                      maxStud: Int,
-                      studPixelWidth: Int)
