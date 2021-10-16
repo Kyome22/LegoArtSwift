@@ -14,8 +14,6 @@ import UIKit
 import AppKit
 #endif
 
-public let LegoBlack = LegoColor.black.cgColor
-
 public class LegoArt {
     let studType: StudType
     let baseColor: CGColor
@@ -26,7 +24,7 @@ public class LegoArt {
     
     public init?(
         ciImage: CIImage,
-        baseColor: CGColor = LegoBlack,
+        baseColor: CGColor = .black,
         studType: StudType = .round,
         maxStud: Int = 48,
         studPixelWidth: Int = 10
@@ -47,7 +45,7 @@ public class LegoArt {
     #if canImport(UIKit)
     public convenience init?(
         from uiImage: UIImage,
-        baseColor: CGColor = LegoBlack,
+        baseColor: CGColor = .black,
         studType: StudType = .round,
         maxStud: Int = 48,
         studPixelWidth: Int = 10
@@ -68,7 +66,7 @@ public class LegoArt {
     #elseif canImport(AppKit)
     public convenience init?(
         from nsImage: NSImage,
-        baseColor: CGColor = LegoBlack,
+        baseColor: CGColor = .black,
         studType: StudType = .round,
         maxStud: Int = 48,
         studPixelWidth: Int = 10
@@ -95,11 +93,10 @@ public class LegoArt {
         let size = resizedImage.extent.size
         let colorMap = (0 ..< Int(size.width * size.height))
             .map { i -> LegoColor in
-                let r = CGFloat(rgbaData[4 * i + 0]) / 255.0
+                let r = CGFloat(rgbaData[4 * i]) / 255.0
                 let g = CGFloat(rgbaData[4 * i + 1]) / 255.0
                 let b = CGFloat(rgbaData[4 * i + 2]) / 255.0
-                let a = CGFloat(rgbaData[4 * i + 3]) / 255.0
-                return LegoColor(r: r, g: g, b: b, a: a)
+                return LegoColor(r: r, g: g, b: b)
             }
         return (colorMap, Int(size.width))
     }
@@ -131,7 +128,7 @@ public class LegoArt {
         for i in (0 ..< colorMap.count) {
             let x = CGFloat(i % w) * (u + 1)
             let y = CGFloat(q - i / w) * (u + 1)
-            let c = colorMap[i].cgColor
+            let c = colorMap[i].color
             switch studType {
             case .round, .roundPlate:
                 cgContext.setFillColor(c)
@@ -141,8 +138,7 @@ public class LegoArt {
                 cgContext.fill(CGRect(x: x, y: y, width: u, height: u))
             }
             if studType == .round || studType == .square {
-                let alpha: CGFloat = (colorMap[i] == .transClear) ? 0.1 : 0.6
-                if let bc = c.blended(cgBlack, fraction: 0.2, alpha: alpha) {
+                if let bc = c.blended(cgBlack, fraction: 0.2, alpha: 0.6) {
                     cgContext.setFillColor(bc)
                     let v = 0.64 * u
                     let r = 0.5 * (u - v)

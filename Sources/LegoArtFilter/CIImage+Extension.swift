@@ -8,6 +8,16 @@
 import CoreImage
 
 extension CIImage {
+    func resizeAffine(maxStud: Int) -> CIImage? {
+        let rect = self.extent
+        if rect.width * rect.height == 0 { return nil }
+        let newRect = rect.scaled(maxPoint: maxStud)
+        let scaleX = newRect.width / rect.width
+        let scaleY = newRect.height / rect.height
+        let transform = CGAffineTransform(scaleX: scaleX, y: scaleY)
+        return self.transformed(by: transform).settingAlphaOne(in: newRect)
+    }
+    
     func correctImage(_ baseColor: CGColor?) -> CGImage? {
         let size = self.extent.size
         let rect = CGRect(origin: .zero, size: size)
@@ -36,13 +46,5 @@ extension CIImage {
         var rgbaData = [UInt8](repeating: 0, count: length)
         CFDataGetBytes(data, CFRange(location: 0, length: length), &rgbaData)
         return rgbaData
-    }
-    
-    func resizeAffine(maxStud: Int) -> CIImage? {
-        let rect = self.extent
-        if rect.width == 0 || rect.height == 0 { return nil }
-        let scale = CGFloat(maxStud) / max(rect.width, rect.height)
-        let transform = CGAffineTransform(scaleX: scale, y: scale)
-        return self.transformed(by: transform).settingAlphaOne(in: rect)
     }
 }
