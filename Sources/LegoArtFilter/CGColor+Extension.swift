@@ -8,7 +8,7 @@
 import CoreGraphics
 import LegoColors
 
-extension CGColor {
+public extension CGColor {
     func blended(_ color: CGColor, fraction: CGFloat, alpha: CGFloat) -> CGColor? {
         guard let rgba1 = self.rgba, let rgba2 = color.rgba else { return nil }
         let fi: CGFloat = 1 - fraction
@@ -17,4 +17,8 @@ extension CGColor {
                        blue:  fi * rgba1.b + fraction * rgba2.b,
                        alpha: alpha)
     }
+    
+    #if os(iOS)
+    static let black = CGColor(gray: 0, alpha: 1)
+    #endif
 }
