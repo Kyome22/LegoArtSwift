@@ -37,6 +37,18 @@ let legoArt = LegoArt(ciImage: CIImage,
                       studPixelWidth: Int)
 ```
 
+## Demo
+
+Demonstration of LegoArtFilter in the Examples directory.
+
+### iOS
+
+<img src="Examples/screenshots/iphone_screenshot_1.png" width="200px" /> <img src="Examples/screenshots/iphone_screenshot_2.png" width="200px" />
+
+### macOS
+
+<img src="Examples/screenshots/mac_screenshot_1.png" width="250px" /> <img src="Examples/screenshots/mac_screenshot_2.png" width="250px" />
+
 ## LICENSE
 
 Copyright (c) 2021 Takuto NAKAMURA (Kyome)
