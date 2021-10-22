@@ -91,18 +91,21 @@ public class LegoArt {
               let rgbaData = resizedImage.rgbaData(baseColor: baseColor)
         else { return ([], 0) }
         let size = resizedImage.extent.size
-        var memo: [[UInt8]: LegoColor] = [:]
+        var memo: [String : LegoColor] = [:]
         let colorMap = (0 ..< Int(size.width * size.height))
             .map { i -> LegoColor in
-                let rgb = [rgbaData[4 * i], rgbaData[4 * i + 1], rgbaData[4 * i + 2]]
-                if let legoColor = memo[rgb] {
+                let keyR = rgbaData[4 * i] / 8
+                let keyG = rgbaData[4 * i + 1] / 8
+                let keyB = rgbaData[4 * i + 2] / 8
+                let key = String(format: "%02d%02d%02d", keyR, keyG, keyB)
+                if let legoColor = memo[key] {
                     return legoColor
                 }
-                let r = CGFloat(rgb[0]) / 255.0
-                let g = CGFloat(rgb[1]) / 255.0
-                let b = CGFloat(rgb[2]) / 255.0
+                let r = CGFloat(rgbaData[4 * i]) / 255.0
+                let g = CGFloat(rgbaData[4 * i + 1]) / 255.0
+                let b = CGFloat(rgbaData[4 * i + 2]) / 255.0
                 let legoColor = LegoColor(r: r, g: g, b: b)
-                memo[rgb] = legoColor
+                memo[key] = legoColor
                 return legoColor
             }
         return (colorMap, Int(size.width))
