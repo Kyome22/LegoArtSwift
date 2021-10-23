@@ -5,7 +5,6 @@
 //  Created by Takuto Nakamura on 2021/10/10.
 //
 
-import SwiftUI
 import LegoColors
 
 #if os(iOS)
