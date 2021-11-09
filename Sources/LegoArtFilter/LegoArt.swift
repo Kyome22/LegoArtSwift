@@ -5,12 +5,11 @@
 //  Created by Takuto Nakamura on 2021/10/10.
 //
 
-import SwiftUI
 import LegoColors
 
-#if os(iOS)
+#if canImport(UIKit)
 import UIKit
-#elseif os(macOS)
+#elseif canImport(AppKit)
 import AppKit
 #endif
 

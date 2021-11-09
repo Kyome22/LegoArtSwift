@@ -6,7 +6,6 @@
 //
 
 import CoreGraphics
-import LegoColors
 
 public extension CGColor {
     func blended(_ color: CGColor, fraction: CGFloat, alpha: CGFloat) -> CGColor? {
