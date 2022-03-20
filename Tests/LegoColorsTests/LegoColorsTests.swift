@@ -1,8 +1,6 @@
 import XCTest
 import SwiftUI
-#if os(iOS)
-@testable import LegoColors
-#elseif os(macOS)
+#if os(iOS) || os(macOS)
 @testable import LegoColors
 #endif
 

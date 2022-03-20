@@ -1,5 +1,5 @@
 //
-//  LegoArt.swift
+//  LegoArtFilter.swift
 //
 //
 //  Created by Takuto Nakamura on 2021/10/10.
@@ -13,7 +13,7 @@ import UIKit
 import AppKit
 #endif
 
-public class LegoArt {
+public class LegoArtFilter {
     let studType: StudType
     let baseColor: CGColor
     let maxStud: Int
@@ -29,9 +29,9 @@ public class LegoArt {
         studPixelWidth: Int = 10
     ) {
         if maxStud <= 0 { return nil }
-        let (colorMap, count) = LegoArt.getColorMap(from: ciImage,
-                                                    baseColor: baseColor,
-                                                    maxStud: maxStud)
+        let (colorMap, count) = LegoArtFilter.getColorMap(from: ciImage,
+                                                          baseColor: baseColor,
+                                                          maxStud: maxStud)
         if colorMap.isEmpty { return nil }
         self.baseColor = baseColor
         self.studType = studType
@@ -41,7 +41,7 @@ public class LegoArt {
         self.colorMap = colorMap
     }
     
-    #if canImport(UIKit)
+#if canImport(UIKit)
     public convenience init?(
         from uiImage: UIImage,
         baseColor: CGColor = .black,
@@ -62,7 +62,7 @@ public class LegoArt {
                   maxStud: maxStud,
                   studPixelWidth: studPixelWidth)
     }
-    #elseif canImport(AppKit)
+#elseif canImport(AppKit)
     public convenience init?(
         from nsImage: NSImage,
         baseColor: CGColor = .black,
@@ -79,7 +79,7 @@ public class LegoArt {
                   maxStud: maxStud,
                   studPixelWidth: studPixelWidth)
     }
-    #endif
+#endif
     
     private static func getColorMap(
         from ciImage: CIImage,
@@ -160,16 +160,16 @@ public class LegoArt {
         return cgContext.makeImage()
     }
     
-    #if canImport(UIKit)
+#if canImport(UIKit)
     public func exportUIImage() -> UIImage? {
         guard let cgImage = exportCGImage() else { return nil }
         return UIImage(cgImage: cgImage)
     }
-    #elseif canImport(AppKit)
+#elseif canImport(AppKit)
     public func exportNSImage() -> NSImage? {
         guard let cgImage = exportCGImage() else { return nil }
         let size = CGSize(width: cgImage.width, height: cgImage.height)
         return NSImage(cgImage: cgImage, size: size)
     }
-    #endif
+#endif
 }

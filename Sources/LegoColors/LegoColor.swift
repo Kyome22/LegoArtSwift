@@ -9,9 +9,9 @@
 
 import SwiftUI
 
-#if os(iOS)
+#if canImport(UIKit)
 import UIKit
-#elseif os(macOS)
+#elseif canImport(AppKit)
 import AppKit
 #endif
 
@@ -27,7 +27,9 @@ public struct LegoColor: Equatable {
     }
 
     func diff(red: CGFloat, green: CGFloat, blue: CGFloat) -> CGFloat {
-        guard let rgba = self.color.rgba else { fatalError("Impossible") }
+        guard let rgba = self.color.rgba else {
+            fatalError("Impossible")
+        }
         return abs(rgba.r - red) + abs(rgba.g - green) + abs(rgba.b - blue)
     }
 
@@ -130,11 +132,11 @@ public extension LegoColor {
         self = LegoColor.getApproximateColor(r: rgba.r, g: rgba.g, b: rgba.b)
     }
 
-#if os(iOS)
+#if canImport(UIKit)
     init?(uiColor: UIColor) {
         self.init(cgColor: uiColor.cgColor)
     }
-#elseif os(macOS)
+#elseif canImport(AppKit)
     init?(nsColor: NSColor) {
         self.init(cgColor: nsColor.cgColor)
     }
