@@ -20,7 +20,8 @@ public class LegoArtFilter {
     let studPixelWidth: Int
     let horizontalStudCount: Int
     let colorMap: [LegoColor]
-    
+
+    // Processing takes longer with the complexity of the image.
     public init?(
         ciImage: CIImage,
         baseColor: CGColor = .black,
@@ -172,4 +173,6 @@ public class LegoArtFilter {
         return NSImage(cgImage: cgImage, size: size)
     }
 #endif
+
+
 }
