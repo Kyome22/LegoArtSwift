@@ -49,7 +49,7 @@ final class LegoArtFilterTests: XCTestCase {
         let legoArtFilter = LegoArtFilter(ciImage: ciImage)!
         let actual = legoArtFilter.exportCGImage()
         XCTAssertNotNil(actual)
-        XCTAssertEqual(actual!.width, (48 * 11 - 1))
+        XCTAssertEqual(actual?.width, (48 * 11 - 1))
     }
 
     func testPartsList() {
