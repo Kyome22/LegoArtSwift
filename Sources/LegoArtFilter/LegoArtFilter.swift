@@ -13,6 +13,20 @@ import UIKit
 import AppKit
 #endif
 
+public struct PartsData {
+    let legoColor: LegoColor
+    var quantity: Int
+
+    init(legoColor: LegoColor) {
+        self.legoColor = legoColor
+        self.quantity = 1
+    }
+
+    mutating func countUp() {
+        quantity += 1
+    }
+}
+
 public class LegoArtFilter {
     let studType: StudType
     let baseColor: CGColor
@@ -87,12 +101,13 @@ public class LegoArtFilter {
         baseColor: CGColor,
         maxStud: Int
     ) -> ([LegoColor], Int) {
-        guard let resizedImage = ciImage.resizeAffine(maxStud: maxStud),
-              let rgbaData = resizedImage.rgbaData(baseColor: baseColor)
+        guard let studImage = CGImage.createStudImage(with: ciImage,
+                                                      baseColor: baseColor,
+                                                      maxStud: maxStud),
+              let rgbaData = studImage.rgbaData()
         else { return ([], 0) }
-        let size = resizedImage.extent.size
         var memo: [String : LegoColor] = [:]
-        let colorMap = (0 ..< Int(size.width * size.height))
+        let colorMap = (0 ..< studImage.width * studImage.height)
             .map { i -> LegoColor in
                 let keyR = rgbaData[4 * i] / 8
                 let keyG = rgbaData[4 * i + 1] / 8
@@ -108,7 +123,7 @@ public class LegoArtFilter {
                 memo[key] = legoColor
                 return legoColor
             }
-        return (colorMap, Int(size.width))
+        return (colorMap, studImage.width)
     }
     
     public func exportCGImage() -> CGImage? {
@@ -174,5 +189,18 @@ public class LegoArtFilter {
     }
 #endif
 
-
+    public var partsList: [PartsData] {
+        var memo: [String : PartsData] = [:]
+        colorMap.forEach { legoColor in
+            let key = legoColor.name
+            if memo[key] != nil {
+                memo[key]!.countUp()
+            } else {
+                memo[key] = PartsData(legoColor: legoColor)
+            }
+        }
+        return memo.values.sorted { a, b in
+            a.quantity > b.quantity
+        }
+    }
 }

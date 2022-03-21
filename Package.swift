@@ -10,18 +10,31 @@ let package = Package(
         .iOS(.v14)
     ],
     products: [
-        .library(name: "LegoColors",
-                 targets: ["LegoColors"]),
-        .library(name: "LegoArtFilter",
-                 targets: ["LegoArtFilter"])
+        .library(
+            name: "LegoColors",
+            targets: ["LegoColors"]
+        ),
+        .library(
+            name: "LegoArtFilter",
+            targets: ["LegoArtFilter"]
+        )
     ],
     targets: [
-        .target(name: "LegoColors"),
-        .target(name: "LegoArtFilter",
-                dependencies: ["LegoColors"]),
-        .testTarget(name: "LegoColorsTests",
-                    dependencies: ["LegoColors"]),
-        .testTarget(name: "LegoArtFilterTests",
-                    dependencies: ["LegoArtFilter"])
+        .target(
+            name: "LegoColors"
+        ),
+        .target(
+            name: "LegoArtFilter",
+            dependencies: ["LegoColors"]
+        ),
+        .testTarget(
+            name: "LegoColorsTests",
+            dependencies: ["LegoColors"]
+        ),
+        .testTarget(
+            name: "LegoArtFilterTests",
+            dependencies: ["LegoArtFilter"],
+            resources: [.process("Images")]
+        )
     ]
 )

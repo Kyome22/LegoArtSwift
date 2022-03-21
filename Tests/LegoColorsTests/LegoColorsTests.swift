@@ -1,11 +1,8 @@
 import XCTest
 import SwiftUI
-#if os(iOS) || os(macOS)
 @testable import LegoColors
-#endif
 
 final class LegoColorsTests: XCTestCase {
-
     func testRGBAfromCGColor() {
         let color = CGColor(srgbRed: 0.12, green: 0.34, blue: 0.56, alpha: 0.78)
         XCTAssertEqual(color.colorSpace?.name, CGColorSpace.sRGB)
