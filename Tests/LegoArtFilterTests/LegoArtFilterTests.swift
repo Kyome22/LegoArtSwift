@@ -2,9 +2,6 @@ import XCTest
 @testable import LegoArtFilter
 
 final class LegoArtFilterTests: XCTestCase {
-    override func setUp() {
-        continueAfterFailure = false
-    }
 
     func printPartsList(partsList: [PartsData]) {
         partsList.forEach({ pd in
@@ -12,20 +9,17 @@ final class LegoArtFilterTests: XCTestCase {
         })
     }
 
-    func testInitWithCIImage() {
+    func testInitWithCIImage() throws {
         let url = Bundle.module.url(forResource: "ginkgo", withExtension: "jpg")
-        XCTAssertNotNil(url)
-        let ciImage = CIImage(contentsOf: url!)
-        XCTAssertNotNil(ciImage)
-        let actual = LegoArtFilter(ciImage: ciImage!)
+        let ciImage = CIImage(contentsOf: try XCTUnwrap(url))
+        let actual = LegoArtFilter(ciImage: try XCTUnwrap(ciImage))
         XCTAssertNotNil(actual)
     }
 
     func testInitWithUIImage() throws {
 #if canImport(UIKit)
         let uiImage = UIImage(named: "ginkgo.jpg", in: Bundle.module, compatibleWith: nil)
-        XCTAssertNotNil(uiImage)
-        let actual = LegoArtFilter(from: uiImage!)
+        let actual = LegoArtFilter(from: try XCTUnwrap(uiImage))
         XCTAssertNotNil(actual)
 #else
         throw XCTSkip("can not import UIKit")
@@ -35,8 +29,7 @@ final class LegoArtFilterTests: XCTestCase {
     func testInitWithNSImage() throws {
 #if canImport(AppKit)
         let nsImage = Bundle.module.image(forResource: NSImage.Name("ginkgo.jpg"))
-        XCTAssertNotNil(nsImage)
-        let actual = LegoArtFilter(from: nsImage!)
+        let actual = LegoArtFilter(from: try XCTUnwrap(nsImage))
         XCTAssertNotNil(actual)
 #else
         throw XCTSkip("can not import AppKit")
@@ -60,4 +53,5 @@ final class LegoArtFilterTests: XCTestCase {
         printPartsList(partsList: actual)
         XCTAssertEqual(actual.count, 49)
     }
+    
 }

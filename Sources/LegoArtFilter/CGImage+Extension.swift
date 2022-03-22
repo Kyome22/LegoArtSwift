@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  CGImage+Extension.swift
 //  
 //
 //  Created by Takuto Nakamura on 2022/03/22.
@@ -7,6 +7,9 @@
 
 import CoreGraphics
 import CoreImage
+#if canImport(UIKit)
+import UIKit
+#endif
 
 extension CGImage {
     static func createStudImage(with ciImage: CIImage, baseColor: CGColor?, maxStud: Int) -> CGImage? {
@@ -46,3 +49,22 @@ extension CGImage {
         return rgbaData
     }
 }
+
+#if canImport(UIKit)
+extension CGImagePropertyOrientation {
+    init(_ uiOrientation: UIImage.Orientation) {
+        switch (uiOrientation) {
+        case .up:            self = .up
+        case .down:          self = .down
+        case .left:          self = .left
+        case .right:         self = .right
+        case .upMirrored:    self = .upMirrored
+        case .downMirrored:  self = .downMirrored
+        case .leftMirrored:  self = .leftMirrored
+        case .rightMirrored: self = .rightMirrored
+        @unknown default:
+            fatalError("Unknown uiOrientation \(uiOrientation)")
+        }
+    }
+}
+#endif

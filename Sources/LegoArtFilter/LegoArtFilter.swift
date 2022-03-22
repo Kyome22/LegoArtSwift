@@ -6,7 +6,6 @@
 //
 
 import LegoColors
-
 #if canImport(UIKit)
 import UIKit
 #elseif canImport(AppKit)
@@ -65,13 +64,9 @@ public class LegoArtFilter {
         studPixelWidth: Int = 10
     ) {
         // Correcting the image orientation
-        let correctUIImage = UIGraphicsImageRenderer(size: uiImage.size)
-            .image(actions: { _ in
-                uiImage.draw(at: .zero)
-            })
-        guard let cgImage = correctUIImage.cgImage else { return nil }
-        let ciImage = CIImage(cgImage: cgImage)
-        self.init(ciImage: ciImage,
+        guard let ciImage = CIImage(image: uiImage) else { return nil }
+        let orientation = CGImagePropertyOrientation(uiImage.imageOrientation)
+        self.init(ciImage: ciImage.oriented(orientation),
                   baseColor: baseColor,
                   studType: studType,
                   maxStud: maxStud,
