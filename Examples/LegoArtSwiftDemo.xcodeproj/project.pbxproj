@@ -1,0 +1,596 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1C00BD7E27E9649D0021EEBB /* LegoArtSwiftDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C00BD6E27E9649D0021EEBB /* LegoArtSwiftDemoApp.swift */; };
+		1C00BD7F27E9649D0021EEBB /* LegoArtSwiftDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C00BD6E27E9649D0021EEBB /* LegoArtSwiftDemoApp.swift */; };
+		1C00BD8027E9649D0021EEBB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C00BD6F27E9649D0021EEBB /* ContentView.swift */; };
+		1C00BD8127E9649D0021EEBB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C00BD6F27E9649D0021EEBB /* ContentView.swift */; };
+		1C00BD8227E9649D0021EEBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C00BD7027E9649D0021EEBB /* Assets.xcassets */; };
+		1C00BD8327E9649D0021EEBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C00BD7027E9649D0021EEBB /* Assets.xcassets */; };
+		1C00BD9027E967670021EEBB /* LegoArtFilter in Frameworks */ = {isa = PBXBuildFile; productRef = 1C00BD8F27E967670021EEBB /* LegoArtFilter */; };
+		1C00BD9227E9676E0021EEBB /* LegoArtFilter in Frameworks */ = {isa = PBXBuildFile; productRef = 1C00BD9127E9676E0021EEBB /* LegoArtFilter */; };
+		1C00BD9427E9740A0021EEBB /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C00BD9327E9740A0021EEBB /* ContentViewModel.swift */; };
+		1C00BD9527E9740A0021EEBB /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C00BD9327E9740A0021EEBB /* ContentViewModel.swift */; };
+		1C00BD9727E984AB0021EEBB /* StudTypeDropDownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C00BD9627E984AB0021EEBB /* StudTypeDropDownMenu.swift */; };
+		1C00BD9827E984AB0021EEBB /* StudTypeDropDownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C00BD9627E984AB0021EEBB /* StudTypeDropDownMenu.swift */; };
+		1C00BD9A27E98FB30021EEBB /* MaxStudDropDownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C00BD9927E98FB30021EEBB /* MaxStudDropDownMenu.swift */; };
+		1C00BD9B27E98FB30021EEBB /* MaxStudDropDownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C00BD9927E98FB30021EEBB /* MaxStudDropDownMenu.swift */; };
+		1C00BD9F27E99A8D0021EEBB /* FileSelectButton_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C00BD9E27E99A8D0021EEBB /* FileSelectButton_iOS.swift */; };
+		1C00BDA227E99B490021EEBB /* FileChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C00BDA127E99B490021EEBB /* FileChooser.swift */; };
+		1C00BDA427E9C2660021EEBB /* FileSelectButton_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C00BDA327E9C2660021EEBB /* FileSelectButton_macOS.swift */; };
+		1C00BDAE27E9C8010021EEBB /* LegoArtImageModel_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C00BDAD27E9C8010021EEBB /* LegoArtImageModel_iOS.swift */; };
+		1C00BDB327E9C92F0021EEBB /* LegoArtImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C00BDB227E9C92F0021EEBB /* LegoArtImageModel.swift */; };
+		1C00BDB427E9C92F0021EEBB /* LegoArtImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C00BDB227E9C92F0021EEBB /* LegoArtImageModel.swift */; };
+		1C00BDB627E9CAFA0021EEBB /* LegoArtImageModel_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C00BDB527E9CAFA0021EEBB /* LegoArtImageModel_macOS.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1C00BD6E27E9649D0021EEBB /* LegoArtSwiftDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegoArtSwiftDemoApp.swift; sourceTree = "<group>"; };
+		1C00BD6F27E9649D0021EEBB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1C00BD7027E9649D0021EEBB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1C00BD7527E9649D0021EEBB /* LegoArtSwiftDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LegoArtSwiftDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C00BD7B27E9649D0021EEBB /* LegoArtSwiftDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LegoArtSwiftDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C00BD7D27E9649D0021EEBB /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		1C00BD8D27E9675B0021EEBB /* LegoArtSwift */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = LegoArtSwift; path = ..; sourceTree = "<group>"; };
+		1C00BD9327E9740A0021EEBB /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		1C00BD9627E984AB0021EEBB /* StudTypeDropDownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudTypeDropDownMenu.swift; sourceTree = "<group>"; };
+		1C00BD9927E98FB30021EEBB /* MaxStudDropDownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxStudDropDownMenu.swift; sourceTree = "<group>"; };
+		1C00BD9E27E99A8D0021EEBB /* FileSelectButton_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSelectButton_iOS.swift; sourceTree = "<group>"; };
+		1C00BDA127E99B490021EEBB /* FileChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileChooser.swift; sourceTree = "<group>"; };
+		1C00BDA327E9C2660021EEBB /* FileSelectButton_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSelectButton_macOS.swift; sourceTree = "<group>"; };
+		1C00BDAD27E9C8010021EEBB /* LegoArtImageModel_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegoArtImageModel_iOS.swift; sourceTree = "<group>"; };
+		1C00BDB227E9C92F0021EEBB /* LegoArtImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegoArtImageModel.swift; sourceTree = "<group>"; };
+		1C00BDB527E9CAFA0021EEBB /* LegoArtImageModel_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegoArtImageModel_macOS.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1C00BD7227E9649D0021EEBB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C00BD9027E967670021EEBB /* LegoArtFilter in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1C00BD7827E9649D0021EEBB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C00BD9227E9676E0021EEBB /* LegoArtFilter in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1C00BD6827E9649D0021EEBB = {
+			isa = PBXGroup;
+			children = (
+				1C00BD8D27E9675B0021EEBB /* LegoArtSwift */,
+				1C00BD6D27E9649D0021EEBB /* Shared */,
+				1C00BD8C27E966000021EEBB /* iOS */,
+				1C00BD7C27E9649D0021EEBB /* macOS */,
+				1C00BD7627E9649D0021EEBB /* Products */,
+				1C00BD8E27E967670021EEBB /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1C00BD6D27E9649D0021EEBB /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				1C00BD6E27E9649D0021EEBB /* LegoArtSwiftDemoApp.swift */,
+				1C00BD9C27E999A70021EEBB /* Model */,
+				1C00BDB727EA05ED0021EEBB /* ViewModel */,
+				1C00BD9D27E999B00021EEBB /* View */,
+				1C00BD7027E9649D0021EEBB /* Assets.xcassets */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		1C00BD7627E9649D0021EEBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1C00BD7527E9649D0021EEBB /* LegoArtSwiftDemo.app */,
+				1C00BD7B27E9649D0021EEBB /* LegoArtSwiftDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1C00BD7C27E9649D0021EEBB /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				1C00BDAC27E9C7E60021EEBB /* Model */,
+				1C00BDAA27E9C7D60021EEBB /* View */,
+				1C00BD7D27E9649D0021EEBB /* macOS.entitlements */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		1C00BD8C27E966000021EEBB /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				1C00BDAB27E9C7DF0021EEBB /* Model */,
+				1C00BDA927E9C7CB0021EEBB /* View */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		1C00BD8E27E967670021EEBB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1C00BD9C27E999A70021EEBB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1C00BDB227E9C92F0021EEBB /* LegoArtImageModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1C00BD9D27E999B00021EEBB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1C00BD6F27E9649D0021EEBB /* ContentView.swift */,
+				1C00BD9627E984AB0021EEBB /* StudTypeDropDownMenu.swift */,
+				1C00BD9927E98FB30021EEBB /* MaxStudDropDownMenu.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1C00BDA927E9C7CB0021EEBB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1C00BD9E27E99A8D0021EEBB /* FileSelectButton_iOS.swift */,
+				1C00BDA127E99B490021EEBB /* FileChooser.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1C00BDAA27E9C7D60021EEBB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1C00BDA327E9C2660021EEBB /* FileSelectButton_macOS.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1C00BDAB27E9C7DF0021EEBB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1C00BDAD27E9C8010021EEBB /* LegoArtImageModel_iOS.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1C00BDAC27E9C7E60021EEBB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1C00BDB527E9CAFA0021EEBB /* LegoArtImageModel_macOS.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1C00BDB727EA05ED0021EEBB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1C00BD9327E9740A0021EEBB /* ContentViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1C00BD7427E9649D0021EEBB /* LegoArtSwiftDemo (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C00BD8627E9649D0021EEBB /* Build configuration list for PBXNativeTarget "LegoArtSwiftDemo (iOS)" */;
+			buildPhases = (
+				1C00BD7127E9649D0021EEBB /* Sources */,
+				1C00BD7227E9649D0021EEBB /* Frameworks */,
+				1C00BD7327E9649D0021EEBB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "LegoArtSwiftDemo (iOS)";
+			packageProductDependencies = (
+				1C00BD8F27E967670021EEBB /* LegoArtFilter */,
+			);
+			productName = "LegoArtSwiftDemo (iOS)";
+			productReference = 1C00BD7527E9649D0021EEBB /* LegoArtSwiftDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1C00BD7A27E9649D0021EEBB /* LegoArtSwiftDemo (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C00BD8927E9649D0021EEBB /* Build configuration list for PBXNativeTarget "LegoArtSwiftDemo (macOS)" */;
+			buildPhases = (
+				1C00BD7727E9649D0021EEBB /* Sources */,
+				1C00BD7827E9649D0021EEBB /* Frameworks */,
+				1C00BD7927E9649D0021EEBB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "LegoArtSwiftDemo (macOS)";
+			packageProductDependencies = (
+				1C00BD9127E9676E0021EEBB /* LegoArtFilter */,
+			);
+			productName = "LegoArtSwiftDemo (macOS)";
+			productReference = 1C00BD7B27E9649D0021EEBB /* LegoArtSwiftDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1C00BD6927E9649D0021EEBB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					1C00BD7427E9649D0021EEBB = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					1C00BD7A27E9649D0021EEBB = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 1C00BD6C27E9649D0021EEBB /* Build configuration list for PBXProject "LegoArtSwiftDemo" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1C00BD6827E9649D0021EEBB;
+			productRefGroup = 1C00BD7627E9649D0021EEBB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1C00BD7427E9649D0021EEBB /* LegoArtSwiftDemo (iOS) */,
+				1C00BD7A27E9649D0021EEBB /* LegoArtSwiftDemo (macOS) */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1C00BD7327E9649D0021EEBB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C00BD8227E9649D0021EEBB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1C00BD7927E9649D0021EEBB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C00BD8327E9649D0021EEBB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1C00BD7127E9649D0021EEBB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C00BDA227E99B490021EEBB /* FileChooser.swift in Sources */,
+				1C00BD9427E9740A0021EEBB /* ContentViewModel.swift in Sources */,
+				1C00BD9727E984AB0021EEBB /* StudTypeDropDownMenu.swift in Sources */,
+				1C00BD9F27E99A8D0021EEBB /* FileSelectButton_iOS.swift in Sources */,
+				1C00BDB327E9C92F0021EEBB /* LegoArtImageModel.swift in Sources */,
+				1C00BD8027E9649D0021EEBB /* ContentView.swift in Sources */,
+				1C00BD9A27E98FB30021EEBB /* MaxStudDropDownMenu.swift in Sources */,
+				1C00BDAE27E9C8010021EEBB /* LegoArtImageModel_iOS.swift in Sources */,
+				1C00BD7E27E9649D0021EEBB /* LegoArtSwiftDemoApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1C00BD7727E9649D0021EEBB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C00BD9527E9740A0021EEBB /* ContentViewModel.swift in Sources */,
+				1C00BD9827E984AB0021EEBB /* StudTypeDropDownMenu.swift in Sources */,
+				1C00BD8127E9649D0021EEBB /* ContentView.swift in Sources */,
+				1C00BDB427E9C92F0021EEBB /* LegoArtImageModel.swift in Sources */,
+				1C00BD9B27E98FB30021EEBB /* MaxStudDropDownMenu.swift in Sources */,
+				1C00BDA427E9C2660021EEBB /* FileSelectButton_macOS.swift in Sources */,
+				1C00BD7F27E9649D0021EEBB /* LegoArtSwiftDemoApp.swift in Sources */,
+				1C00BDB627E9CAFA0021EEBB /* LegoArtImageModel_macOS.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1C00BD8427E9649D0021EEBB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1C00BD8527E9649D0021EEBB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		1C00BD8727E9649D0021EEBB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VJ5N2X84K8;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kyome.LegoArtSwiftDemo;
+				PRODUCT_NAME = LegoArtSwiftDemo;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1C00BD8827E9649D0021EEBB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VJ5N2X84K8;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kyome.LegoArtSwiftDemo;
+				PRODUCT_NAME = LegoArtSwiftDemo;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1C00BD8A27E9649D0021EEBB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VJ5N2X84K8;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kyome.LegoArtSwiftDemo;
+				PRODUCT_NAME = LegoArtSwiftDemo;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		1C00BD8B27E9649D0021EEBB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VJ5N2X84K8;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kyome.LegoArtSwiftDemo;
+				PRODUCT_NAME = LegoArtSwiftDemo;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1C00BD6C27E9649D0021EEBB /* Build configuration list for PBXProject "LegoArtSwiftDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C00BD8427E9649D0021EEBB /* Debug */,
+				1C00BD8527E9649D0021EEBB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1C00BD8627E9649D0021EEBB /* Build configuration list for PBXNativeTarget "LegoArtSwiftDemo (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C00BD8727E9649D0021EEBB /* Debug */,
+				1C00BD8827E9649D0021EEBB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1C00BD8927E9649D0021EEBB /* Build configuration list for PBXNativeTarget "LegoArtSwiftDemo (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C00BD8A27E9649D0021EEBB /* Debug */,
+				1C00BD8B27E9649D0021EEBB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1C00BD8F27E967670021EEBB /* LegoArtFilter */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = LegoArtFilter;
+		};
+		1C00BD9127E9676E0021EEBB /* LegoArtFilter */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = LegoArtFilter;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 1C00BD6927E9649D0021EEBB /* Project object */;
+}
