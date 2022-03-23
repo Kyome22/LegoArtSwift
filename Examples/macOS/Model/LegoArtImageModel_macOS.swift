@@ -18,6 +18,7 @@ struct LegoArtImageModel_macOS: LegoArtImageModel {
     var studType: StudType
     var maxStud: Int
     var legoArtCGImage: CGImage?
+    var partsList: [PartsData] = []
 
     init() {
         studType = studTypeList[studTypeDefaultSelection]
@@ -35,5 +36,6 @@ struct LegoArtImageModel_macOS: LegoArtImageModel {
             return
         }
         legoArtCGImage = legoArt.exportCGImage()
+        partsList = legoArt.partsList
     }
 }

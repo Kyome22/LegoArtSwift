@@ -7,20 +7,28 @@
 
 import SwiftUI
 
+#if os(iOS)
 @main
 struct LegoArtSwiftDemoApp: App {
-    #if os(macOS)
-    @NSApplicationDelegateAdaptor private var appDelegate: AppDelegate
-    #endif
-
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
     }
 }
+#elseif os(macOS)
+@main
+struct LegoArtSwiftDemoApp: App {
+    @NSApplicationDelegateAdaptor private var appDelegate: AppDelegate
 
-#if os(macOS)
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+                .frame(minWidth: 480, minHeight: 360, alignment: .center)
+        }
+    }
+}
+
 final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         return true

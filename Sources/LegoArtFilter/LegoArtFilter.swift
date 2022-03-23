@@ -12,20 +12,6 @@ import UIKit
 import AppKit
 #endif
 
-public struct PartsData {
-    let legoColor: LegoColor
-    var quantity: Int
-
-    init(legoColor: LegoColor) {
-        self.legoColor = legoColor
-        self.quantity = 1
-    }
-
-    mutating func countUp() {
-        quantity += 1
-    }
-}
-
 public class LegoArtFilter {
     let studType: StudType
     let baseColor: CGColor

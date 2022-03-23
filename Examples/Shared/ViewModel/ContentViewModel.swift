@@ -9,6 +9,7 @@ import Foundation
 import CoreGraphics
 import LegoArtFilter
 
+@MainActor
 class ContentViewModel: ObservableObject {
     @Published var legoArtImageModel: LegoArtImageModel
 
@@ -29,6 +30,13 @@ class ContentViewModel: ObservableObject {
     }
     var legoArtCGImage: CGImage? {
         return legoArtImageModel.legoArtCGImage
+    }
+    var partsList: [PartsData] {
+        return legoArtImageModel.partsList
+    }
+    var digitNumber: Int {
+        let quantity = legoArtImageModel.partsList.first?.quantity ?? 0
+        return String(quantity).count
     }
 
     init() {

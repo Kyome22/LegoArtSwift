@@ -9,7 +9,7 @@ import SwiftUI
 import LegoArtFilter
 
 struct ContentView: View {
-    @ObservedObject var contentViewModel = ContentViewModel()
+    @StateObject var contentViewModel = ContentViewModel()
 
     var body: some View {
         VStack {
@@ -17,18 +17,17 @@ struct ContentView: View {
                 .font(.title)
                 .truncationMode(.middle)
                 .lineLimit(1)
-                .padding(16)
+                .padding(8)
             LegoArtImage()
                 .resizable()
                 .scaledToFit()
-                .padding(16)
+                .padding(8)
             SelectButton()
-                .padding(.bottom, 16)
+                .padding(8)
             DropDownMenus()
+                .padding(8)
+            PartsTable(contentViewModel)
         }
-#if os(macOS)
-        .frame(minWidth: 480, minHeight: 360, alignment: .center)
-#endif
         .padding(16)
     }
 

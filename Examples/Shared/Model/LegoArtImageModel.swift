@@ -20,6 +20,7 @@ protocol LegoArtImageModel {
     var studType: StudType { get set }
     var maxStud: Int { get set }
     var legoArtCGImage: CGImage? { get set }
+    var partsList: [PartsData] { get set }
 
     mutating func convertURLtoLegoArtCGImage()
 }

@@ -21,6 +21,7 @@ struct FileSelectButton_iOS: View {
         Button("Select Image") {
             showingFileChooser = true
         }
+        .buttonStyle(.bordered)
         .sheet(isPresented: $showingFileChooser) {
             FileChooser(selectedURL: $selectedURL)
         }
