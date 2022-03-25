@@ -57,4 +57,8 @@ final class ContentViewModel: ObservableObject {
             })
             .store(in: &cancellables)
     }
+
+    func saveLegoArt(saveURL: URL) {
+        model.saveLegoArt(saveURL: saveURL, legoArtCGImage: legoArtCGImage)
+    }
 }

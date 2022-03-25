@@ -22,7 +22,7 @@ struct ContentView: View {
                 .resizable()
                 .scaledToFit()
                 .padding(8)
-            SelectButton()
+            Buttons()
                 .padding(8)
             DropDownMenus()
                 .padding(8)
@@ -48,16 +48,22 @@ struct ContentView: View {
         }
     }
 
-    func SelectButton() -> some View {
+    func Buttons() -> some View {
+        HStack {
 #if os(iOS)
-        FileSelectButton_iOS { url in
-            viewModel.contentURL = url
-        }
+            FileSelectButton_iOS { url in
+                viewModel.contentURL = url
+            }
 #elseif os(macOS)
-        FileSelectButton_macOS { url in
-            viewModel.contentURL = url
-        }
+            FileSelectButton_macOS { url in
+                viewModel.contentURL = url
+            }
+            FileSaveButton_macOS { url in
+                viewModel.saveLegoArt(saveURL: url)
+            }
+            .disabled(viewModel.legoArtCGImage == nil)
 #endif
+        }
     }
 
     func DropDownMenus() -> some View {

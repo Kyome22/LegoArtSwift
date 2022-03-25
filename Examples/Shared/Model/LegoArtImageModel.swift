@@ -19,4 +19,6 @@ protocol LegoArtImageModel {
     var legoArtPublisher: AnyPublisher<LegoArtData, Never> { get }
 
     func convertLegoArtCGImage(contentURL: URL?, studType: StudType, maxStud: Int)
+
+    func saveLegoArt(saveURL: URL, legoArtCGImage: CGImage?)
 }

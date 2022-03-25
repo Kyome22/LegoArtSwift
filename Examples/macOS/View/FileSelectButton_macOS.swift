@@ -14,14 +14,22 @@ struct FileSelectButton_macOS: View {
     init(didSelect handler: @escaping (URL?) -> Void) {
         self.handler = handler
     }
-
+    
     var body: some View {
         Button("Select Image") {
             let panel = NSOpenPanel()
+            panel.directoryURL = URL(fileURLWithPath: "\(NSHomeDirectory())/Desktop")
             panel.allowedContentTypes = [UTType.png, UTType.jpeg]
             panel.canChooseDirectories = false
             panel.allowsMultipleSelection = false
-            if panel.runModal() == .OK {
+            panel.message = "Select Image"
+            if let window = NSApplication.shared.mainWindow {
+                panel.beginSheetModal(for: window) { response in
+                    if response == .OK {
+                        handler(panel.url)
+                    }
+                }
+            } else if panel.runModal() == .OK {
                 handler(panel.url)
             }
         }

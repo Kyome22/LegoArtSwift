@@ -8,6 +8,7 @@
 import AppKit.NSImage
 import Combine
 import LegoArtFilter
+import UniformTypeIdentifiers
 
 final class LegoArtImageModel_macOS: LegoArtImageModel {
     let studTypeList: [StudType] = [.round, .roundPlate, .square, .squarePlate]
@@ -21,17 +22,29 @@ final class LegoArtImageModel_macOS: LegoArtImageModel {
         return legoArtSubject.eraseToAnyPublisher()
     }
 
-    func convertLegoArtCGImage(
-        contentURL: URL?,
-        studType: StudType,
-        maxStud: Int
-    ) {
+    func convertLegoArtCGImage(contentURL: URL?, studType: StudType, maxStud: Int) {
         if let contentURL = contentURL,
            let nsImage = NSImage(contentsOf: contentURL),
            let legoArt = LegoArtFilter(from: nsImage, studType: studType, maxStud: maxStud) {
             legoArtSubject.send(LegoArtData(legoArt.exportCGImage(), legoArt.partsList))
         } else {
             legoArtSubject.send(LegoArtData())
+        }
+    }
+
+    func saveLegoArt(saveURL: URL, legoArtCGImage: CGImage?) {
+        if let legoArtCGImage = legoArtCGImage {
+            let imageRep = NSBitmapImageRep(cgImage: legoArtCGImage)
+            switch UTType(filenameExtension: saveURL.pathExtension) {
+            case UTType.png:
+                let pngData = imageRep.representation(using: .png, properties: [:])
+                try? pngData?.write(to: saveURL)
+            case UTType.jpeg:
+                let jpegData = imageRep.representation(using: .jpeg, properties: [:])
+                try? jpegData?.write(to: saveURL)
+            default:
+                return
+            }
         }
     }
 }
