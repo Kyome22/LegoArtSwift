@@ -27,6 +27,8 @@ final class ContentViewModel: ObservableObject {
     @Published var legoArtCGImage: CGImage? = nil
     @Published var partsList = [PartsData]()
     @Published var digitNumber: Int = 0
+    @Published var showingAlert: Bool = false
+    @Published var message: String = ""
 
     init(_ model: LegoArtImageModel) {
         self.model = model
@@ -56,13 +58,20 @@ final class ContentViewModel: ObservableObject {
                 self?.digitNumber = legoArtData.digitNumber
             })
             .store(in: &cancellables)
+
+        self.model.saveLegoArtPublisher
+            .sink(receiveValue: { [weak self] message in
+                self?.message = message
+                self?.showingAlert = true
+            })
+            .store(in: &cancellables)
     }
 
     func saveLegoArt(saveURL: URL) {
         model.saveLegoArt(saveURL: saveURL, legoArtCGImage: legoArtCGImage)
     }
 
-    func saveLegoArt(callback: @escaping (String) -> Void) {
-        model.saveLegoArt(legoArtCGImage: legoArtCGImage, callback: callback)
+    func saveLegoArt() {
+        model.saveLegoArt(legoArtCGImage: legoArtCGImage)
     }
 }

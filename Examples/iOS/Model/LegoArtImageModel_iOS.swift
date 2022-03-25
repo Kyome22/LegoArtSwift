@@ -21,7 +21,10 @@ final class LegoArtImageModel_iOS: NSObject, LegoArtImageModel {
         return legoArtSubject.eraseToAnyPublisher()
     }
 
-    var saveLegoArtCallback: ((String) -> Void)? = nil
+    private let saveLegoArtSubject = PassthroughSubject<String, Never>()
+    var saveLegoArtPublisher: AnyPublisher<String, Never> {
+        return saveLegoArtSubject.eraseToAnyPublisher()
+    }
 
     func convertLegoArtCGImage(
         contentURL: URL?,
@@ -37,8 +40,7 @@ final class LegoArtImageModel_iOS: NSObject, LegoArtImageModel {
         }
     }
 
-    func saveLegoArt(legoArtCGImage: CGImage?, callback: @escaping (String) -> Void) {
-        self.saveLegoArtCallback = callback
+    func saveLegoArt(legoArtCGImage: CGImage?) {
         if let legoArtCGImage = legoArtCGImage {
             UIImageWriteToSavedPhotosAlbum(UIImage(cgImage: legoArtCGImage), self,
                                            #selector(saveComplete(_:didFinishSavingWithError:contextInfo:)), nil)
@@ -47,9 +49,9 @@ final class LegoArtImageModel_iOS: NSObject, LegoArtImageModel {
 
     @objc func saveComplete(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         if let error = error {
-            saveLegoArtCallback?(error.localizedDescription)
+            saveLegoArtSubject.send(error.localizedDescription)
         } else {
-            saveLegoArtCallback?("Succeed🎉")
+            saveLegoArtSubject.send("Succeed🎉")
         }
     }
 }

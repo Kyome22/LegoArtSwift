@@ -18,14 +18,18 @@ protocol LegoArtImageModel {
     var maxStudDefaultSelection: Int { get }
 
     var legoArtPublisher: AnyPublisher<LegoArtData, Never> { get }
+    var saveLegoArtPublisher: AnyPublisher<String, Never> { get }
 
     func convertLegoArtCGImage(contentURL: URL?, studType: StudType, maxStud: Int)
 
     func saveLegoArt(saveURL: URL, legoArtCGImage: CGImage?)
-    func saveLegoArt(legoArtCGImage: CGImage?, callback: @escaping (String) -> Void)
+    func saveLegoArt(legoArtCGImage: CGImage?)
 }
 
 extension LegoArtImageModel {
+    var saveLegoArtPublisher: AnyPublisher<String, Never> {
+        return Just("").eraseToAnyPublisher()
+    }
     func saveLegoArt(saveURL: URL, legoArtCGImage: CGImage?) {}
-    func saveLegoArt(legoArtCGImage: CGImage?, callback: @escaping (String) -> Void) {}
+    func saveLegoArt(legoArtCGImage: CGImage?) {}
 }
