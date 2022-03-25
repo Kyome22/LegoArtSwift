@@ -30,6 +30,8 @@
 		1C00BDB627E9CAFA0021EEBB /* LegoArtImageModel_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C00BDB527E9CAFA0021EEBB /* LegoArtImageModel_macOS.swift */; };
 		1C00BDB927EBB3AD0021EEBB /* PartsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C00BDB827EBB3AD0021EEBB /* PartsTable.swift */; };
 		1C00BDBA27EBB3AD0021EEBB /* PartsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C00BDB827EBB3AD0021EEBB /* PartsTable.swift */; };
+		1C00BDBC27EE00A90021EEBB /* LegoArtData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C00BDBB27EE00A90021EEBB /* LegoArtData.swift */; };
+		1C00BDBD27EE00A90021EEBB /* LegoArtData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C00BDBB27EE00A90021EEBB /* LegoArtData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,7 @@
 		1C00BDB227E9C92F0021EEBB /* LegoArtImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegoArtImageModel.swift; sourceTree = "<group>"; };
 		1C00BDB527E9CAFA0021EEBB /* LegoArtImageModel_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegoArtImageModel_macOS.swift; sourceTree = "<group>"; };
 		1C00BDB827EBB3AD0021EEBB /* PartsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartsTable.swift; sourceTree = "<group>"; };
+		1C00BDBB27EE00A90021EEBB /* LegoArtData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegoArtData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				1C00BDB227E9C92F0021EEBB /* LegoArtImageModel.swift */,
+				1C00BDBB27EE00A90021EEBB /* LegoArtData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -299,6 +303,7 @@
 				1C00BD9427E9740A0021EEBB /* ContentViewModel.swift in Sources */,
 				1C00BDB927EBB3AD0021EEBB /* PartsTable.swift in Sources */,
 				1C00BD9727E984AB0021EEBB /* StudTypeDropDownMenu.swift in Sources */,
+				1C00BDBC27EE00A90021EEBB /* LegoArtData.swift in Sources */,
 				1C00BD9F27E99A8D0021EEBB /* FileSelectButton_iOS.swift in Sources */,
 				1C00BDB327E9C92F0021EEBB /* LegoArtImageModel.swift in Sources */,
 				1C00BD8027E9649D0021EEBB /* ContentView.swift in Sources */,
@@ -316,6 +321,7 @@
 				1C00BD9827E984AB0021EEBB /* StudTypeDropDownMenu.swift in Sources */,
 				1C00BD8127E9649D0021EEBB /* ContentView.swift in Sources */,
 				1C00BDB427E9C92F0021EEBB /* LegoArtImageModel.swift in Sources */,
+				1C00BDBD27EE00A90021EEBB /* LegoArtData.swift in Sources */,
 				1C00BD9B27E98FB30021EEBB /* MaxStudDropDownMenu.swift in Sources */,
 				1C00BDA427E9C2660021EEBB /* FileSelectButton_macOS.swift in Sources */,
 				1C00BD7F27E9649D0021EEBB /* LegoArtSwiftDemoApp.swift in Sources */,

@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct FileSelectButton_iOS: View {
-    @ObservedObject var contentViewModel: ContentViewModel
-
     @State var showingFileChooser = false
     @State var selectedURL: URL?
 
-    init(_ contentViewModel: ContentViewModel) {
-        self.contentViewModel = contentViewModel
+    private let handler: (URL?) -> Void
+
+    init(didSelect handler: @escaping (URL?) -> Void) {
+        self.handler = handler
     }
 
     var body: some View {
@@ -26,13 +26,13 @@ struct FileSelectButton_iOS: View {
             FileChooser(selectedURL: $selectedURL)
         }
         .onChange(of: selectedURL) { newValue in
-            contentViewModel.updateContentURL(newValue)
+            handler(newValue)
         }
     }
 }
 
 struct FileSelectView_iOS_Previews: PreviewProvider {
     static var previews: some View {
-        FileSelectButton_iOS(ContentViewModel())
+        FileSelectButton_iOS(didSelect: { _ in })
     }
 }

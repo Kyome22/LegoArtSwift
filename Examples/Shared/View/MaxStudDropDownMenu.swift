@@ -8,16 +8,19 @@
 import SwiftUI
 
 struct MaxStudDropDownMenu: View {
-    @ObservedObject var contentViewModel: ContentViewModel
-
     @State var maxStudSelection: Int
 
     private let maxStudList: [Int]
+    private let handler: (Int) -> Void
 
-    init(_ contentViewModel: ContentViewModel) {
-        self.contentViewModel = contentViewModel
-        self.maxStudSelection = contentViewModel.maxStudDefaultSelection
-        self.maxStudList = contentViewModel.maxStudList
+    init(
+        maxStudList: [Int],
+        defaultSelection: Int,
+        didChange handler: @escaping (Int) -> Void
+    ) {
+        self.maxStudList = maxStudList
+        self.maxStudSelection = defaultSelection
+        self.handler = handler
     }
 
     var body: some View {
@@ -28,13 +31,15 @@ struct MaxStudDropDownMenu: View {
         }
         .pickerStyle(SegmentedPickerStyle())
         .onChange(of: maxStudSelection) { newValue in
-            contentViewModel.updateMaxStud(maxStudList[newValue])
+            handler(maxStudList[newValue])
         }
     }
 }
 
 struct MaxStudDropDownMenu_Previews: PreviewProvider {
     static var previews: some View {
-        MaxStudDropDownMenu(ContentViewModel())
+        MaxStudDropDownMenu(maxStudList: [],
+                            defaultSelection: 0,
+                            didChange: { _ in })
     }
 }

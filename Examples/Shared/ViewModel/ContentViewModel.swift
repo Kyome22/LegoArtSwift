@@ -6,59 +6,55 @@
 //
 
 import Foundation
+import Combine
 import CoreGraphics
 import LegoArtFilter
 
 @MainActor
-class ContentViewModel: ObservableObject {
-    @Published var legoArtImageModel: LegoArtImageModel
+final class ContentViewModel: ObservableObject {
+    private let model: LegoArtImageModel
+    private var cancellables = Set<AnyCancellable>()
 
-    var studTypeDefaultSelection: Int {
-        return legoArtImageModel.studTypeDefaultSelection
-    }
-    var maxStudDefaultSelection: Int {
-        return legoArtImageModel.maxStudDefaultSelection
-    }
-    var studTypeList: [StudType] {
-        return legoArtImageModel.studTypeList
-    }
-    var maxStudList: [Int] {
-        return legoArtImageModel.maxStudList
-    }
-    var contentURL: URL? {
-        return legoArtImageModel.contentURL
-    }
-    var legoArtCGImage: CGImage? {
-        return legoArtImageModel.legoArtCGImage
-    }
-    var partsList: [PartsData] {
-        return legoArtImageModel.partsList
-    }
-    var digitNumber: Int {
-        let quantity = legoArtImageModel.partsList.first?.quantity ?? 0
-        return String(quantity).count
-    }
+    let studTypeList: [StudType]
+    let studTypeDefaultSelection: Int
 
-    init() {
-#if os(iOS)
-        legoArtImageModel = LegoArtImageModel_iOS()
-#elseif os(macOS)
-        legoArtImageModel = LegoArtImageModel_macOS()
-#endif
-    }
+    let maxStudList: [Int]
+    let maxStudDefaultSelection: Int
 
-    func updateContentURL(_ contentURL: URL?) {
-        legoArtImageModel.contentURL = contentURL
-        legoArtImageModel.convertURLtoLegoArtCGImage()
-    }
+    @Published var contentURL: URL? = nil
+    @Published var studType: StudType
+    @Published var maxStud: Int
+    @Published var legoArtCGImage: CGImage? = nil
+    @Published var partsList = [PartsData]()
+    @Published var digitNumber: Int = 0
 
-    func updateStudType(_ studType: StudType) {
-        legoArtImageModel.studType = studType
-        legoArtImageModel.convertURLtoLegoArtCGImage()
-    }
+    init(_ model: LegoArtImageModel) {
+        self.model = model
 
-    func updateMaxStud(_ maxStud: Int) {
-        legoArtImageModel.maxStud = maxStud
-        legoArtImageModel.convertURLtoLegoArtCGImage()
+        studTypeList = model.studTypeList
+        studTypeDefaultSelection = model.studTypeDefaultSelection
+        studType = studTypeList[studTypeDefaultSelection]
+
+        maxStudList = model.maxStudList
+        maxStudDefaultSelection = model.maxStudDefaultSelection
+        maxStud = maxStudList[maxStudDefaultSelection]
+
+        $contentURL
+            .combineLatest($studType, $maxStud)
+            .dropFirst()
+            .sink(receiveValue: { [weak self] (contentURL, studType, maxStud) in
+                self?.model.convertLegoArtCGImage(contentURL: contentURL,
+                                            studType: studType,
+                                            maxStud: maxStud)
+            })
+            .store(in: &cancellables)
+
+        self.model.legoArtPublisher
+            .sink(receiveValue: { [weak self] legoArtData in
+                self?.legoArtCGImage = legoArtData.legoArtCGImage
+                self?.partsList = legoArtData.partsList
+                self?.digitNumber = legoArtData.digitNumber
+            })
+            .store(in: &cancellables)
     }
 }

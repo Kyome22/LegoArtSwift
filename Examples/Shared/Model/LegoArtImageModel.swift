@@ -6,21 +6,17 @@
 //
 
 import Foundation
-import CoreGraphics
+import Combine
 import LegoArtFilter
 
 protocol LegoArtImageModel {
+    var studTypeList: [StudType] { get }
     var studTypeDefaultSelection: Int { get }
+
+    var maxStudList: [Int] { get }
     var maxStudDefaultSelection: Int { get }
 
-    var studTypeList: [StudType] { get }
-    var maxStudList: [Int] { get }
+    var legoArtPublisher: AnyPublisher<LegoArtData, Never> { get }
 
-    var contentURL: URL? { get set }
-    var studType: StudType { get set }
-    var maxStud: Int { get set }
-    var legoArtCGImage: CGImage? { get set }
-    var partsList: [PartsData] { get set }
-
-    mutating func convertURLtoLegoArtCGImage()
+    func convertLegoArtCGImage(contentURL: URL?, studType: StudType, maxStud: Int)
 }

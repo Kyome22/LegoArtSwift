@@ -9,17 +9,13 @@ import SwiftUI
 import LegoArtFilter
 
 struct PartsTable: View {
-    @ObservedObject var contentViewModel: ContentViewModel
-
-    init(_ contentViewModel: ContentViewModel) {
-        self.contentViewModel = contentViewModel
-    }
+    @Binding var partsList: [PartsData]
+    @Binding var digitNumber: Int
 
     var body: some View {
-        let digitNumber = contentViewModel.digitNumber
         List {
             Section("Parts List:") {
-                ForEach(contentViewModel.partsList, id: \.legoColor.name) { data in
+                ForEach(partsList, id: \.legoColor.name) { data in
                     HStack {
                         Color(data.legoColor.color)
                             .frame(width: 12, height: 12, alignment: .center)
@@ -37,7 +33,10 @@ struct PartsTable: View {
 }
 
 struct PartsList_Previews: PreviewProvider {
+    @State static var partsList = [PartsData]()
+    @State static var digitNumber = 0
+
     static var previews: some View {
-        PartsTable(ContentViewModel())
+        PartsTable(partsList: $partsList, digitNumber: $digitNumber)
     }
 }

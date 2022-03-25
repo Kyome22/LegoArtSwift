@@ -9,16 +9,19 @@ import SwiftUI
 import LegoArtFilter
 
 struct StudTypeDropDownMenu: View {
-    @ObservedObject var contentViewModel: ContentViewModel
-
     @State var studTypeSelection: Int
 
     private let studTypeList: [StudType]
+    private let handler: (StudType) -> Void
 
-    init(_ contentViewModel: ContentViewModel) {
-        self.contentViewModel = contentViewModel
-        self.studTypeSelection = contentViewModel.studTypeDefaultSelection
-        self.studTypeList = contentViewModel.studTypeList
+    init(
+        studTypeList: [StudType],
+        defaultSelection: Int,
+        didChange handler: @escaping (StudType) -> Void
+    ) {
+        self.studTypeList = studTypeList
+        self.studTypeSelection = defaultSelection
+        self.handler = handler
     }
 
     var body: some View {
@@ -29,13 +32,15 @@ struct StudTypeDropDownMenu: View {
         }
         .pickerStyle(SegmentedPickerStyle())
         .onChange(of: studTypeSelection) { newValue in
-            contentViewModel.updateStudType(studTypeList[newValue])
+            handler(studTypeList[newValue])
         }
     }
 }
 
 struct StudTypeDropDownMenu_Previews: PreviewProvider {
     static var previews: some View {
-        StudTypeDropDownMenu(ContentViewModel())
+        StudTypeDropDownMenu(studTypeList: [],
+                             defaultSelection: 0,
+                             didChange: { _ in })
     }
 }

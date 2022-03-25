@@ -12,7 +12,7 @@ import SwiftUI
 struct LegoArtSwiftDemoApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(viewModel: ContentViewModel(LegoArtImageModel_iOS()))
         }
     }
 }
@@ -23,7 +23,7 @@ struct LegoArtSwiftDemoApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(viewModel: ContentViewModel(LegoArtImageModel_macOS()))
                 .frame(minWidth: 480, minHeight: 360, alignment: .center)
         }
     }

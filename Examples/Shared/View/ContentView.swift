@@ -9,7 +9,7 @@ import SwiftUI
 import LegoArtFilter
 
 struct ContentView: View {
-    @StateObject var contentViewModel = ContentViewModel()
+    @StateObject var viewModel: ContentViewModel
 
     var body: some View {
         VStack {
@@ -26,13 +26,14 @@ struct ContentView: View {
                 .padding(8)
             DropDownMenus()
                 .padding(8)
-            PartsTable(contentViewModel)
+            PartsTable(partsList: $viewModel.partsList,
+                       digitNumber: $viewModel.digitNumber)
         }
         .padding(16)
     }
 
     func Title() -> some View {
-        if let url = contentViewModel.contentURL {
+        if let url = viewModel.contentURL {
             return Text(url.lastPathComponent)
         } else {
             return Text("No Image")
@@ -40,7 +41,7 @@ struct ContentView: View {
     }
 
     func LegoArtImage() -> Image {
-        if let cgImage = contentViewModel.legoArtCGImage {
+        if let cgImage = viewModel.legoArtCGImage {
             return Image(cgImage, scale: 1.0, label: Text("hoge"))
         } else {
             return Image(systemName: "photo")
@@ -49,23 +50,39 @@ struct ContentView: View {
 
     func SelectButton() -> some View {
 #if os(iOS)
-        FileSelectButton_iOS(contentViewModel)
+        FileSelectButton_iOS { url in
+            viewModel.contentURL = url
+        }
 #elseif os(macOS)
-        FileSelectButton_macOS(contentViewModel)
+        FileSelectButton_macOS { url in
+            viewModel.contentURL = url
+        }
 #endif
     }
 
     func DropDownMenus() -> some View {
         VStack(alignment: .leading) {
-            StudTypeDropDownMenu(contentViewModel)
+            StudTypeDropDownMenu(studTypeList: viewModel.studTypeList,
+                                 defaultSelection: viewModel.studTypeDefaultSelection,
+                                 didChange: { studType in
+                viewModel.studType = studType
+            })
                 .padding(.bottom, 8)
-            MaxStudDropDownMenu(contentViewModel)
+            MaxStudDropDownMenu(maxStudList: viewModel.maxStudList,
+                                defaultSelection: viewModel.maxStudDefaultSelection,
+                                didChange: { maxStud in
+                viewModel.maxStud = maxStud
+            })
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+#if os(iOS)
+        ContentView(viewModel: ContentViewModel(LegoArtImageModel_iOS()))
+#elseif os(macOS)
+        ContentView(viewModel: ContentViewModel(LegoArtImageModel_macOS()))
+#endif
     }
 }
