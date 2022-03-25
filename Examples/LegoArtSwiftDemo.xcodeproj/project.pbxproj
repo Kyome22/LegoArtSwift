@@ -32,8 +32,8 @@
 		1C00BDBA27EBB3AD0021EEBB /* PartsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C00BDB827EBB3AD0021EEBB /* PartsTable.swift */; };
 		1C00BDBC27EE00A90021EEBB /* LegoArtData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C00BDBB27EE00A90021EEBB /* LegoArtData.swift */; };
 		1C00BDBD27EE00A90021EEBB /* LegoArtData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C00BDBB27EE00A90021EEBB /* LegoArtData.swift */; };
-		1C00BDBF27EE079D0021EEBB /* FileSaveButton_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C00BDBE27EE079D0021EEBB /* FileSaveButton_macOS.swift */; };
 		1C00BDC027EE079D0021EEBB /* FileSaveButton_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C00BDBE27EE079D0021EEBB /* FileSaveButton_macOS.swift */; };
+		1C00BDC227EE123F0021EEBB /* FileSaveButton_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C00BDC127EE123F0021EEBB /* FileSaveButton_iOS.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +56,7 @@
 		1C00BDB827EBB3AD0021EEBB /* PartsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartsTable.swift; sourceTree = "<group>"; };
 		1C00BDBB27EE00A90021EEBB /* LegoArtData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegoArtData.swift; sourceTree = "<group>"; };
 		1C00BDBE27EE079D0021EEBB /* FileSaveButton_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSaveButton_macOS.swift; sourceTree = "<group>"; };
+		1C00BDC127EE123F0021EEBB /* FileSaveButton_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSaveButton_iOS.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +163,7 @@
 			children = (
 				1C00BD9E27E99A8D0021EEBB /* FileSelectButton_iOS.swift */,
 				1C00BDA127E99B490021EEBB /* FileChooser.swift */,
+				1C00BDC127EE123F0021EEBB /* FileSaveButton_iOS.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -309,7 +311,7 @@
 				1C00BD9727E984AB0021EEBB /* StudTypeDropDownMenu.swift in Sources */,
 				1C00BDBC27EE00A90021EEBB /* LegoArtData.swift in Sources */,
 				1C00BD9F27E99A8D0021EEBB /* FileSelectButton_iOS.swift in Sources */,
-				1C00BDBF27EE079D0021EEBB /* FileSaveButton_macOS.swift in Sources */,
+				1C00BDC227EE123F0021EEBB /* FileSaveButton_iOS.swift in Sources */,
 				1C00BDB327E9C92F0021EEBB /* LegoArtImageModel.swift in Sources */,
 				1C00BD8027E9649D0021EEBB /* ContentView.swift in Sources */,
 				1C00BD9A27E98FB30021EEBB /* MaxStudDropDownMenu.swift in Sources */,
@@ -460,6 +462,7 @@
 				DEVELOPMENT_TEAM = VJ5N2X84K8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Save images to the photo library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -490,6 +493,7 @@
 				DEVELOPMENT_TEAM = VJ5N2X84K8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Save images to the photo library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

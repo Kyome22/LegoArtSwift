@@ -9,7 +9,7 @@ import UIKit.UIImage
 import Combine
 import LegoArtFilter
 
-final class LegoArtImageModel_iOS: LegoArtImageModel {
+final class LegoArtImageModel_iOS: NSObject, LegoArtImageModel {
     let studTypeList: [StudType] = [.round, .roundPlate, .square, .squarePlate]
     let studTypeDefaultSelection: Int = 0
 
@@ -20,6 +20,8 @@ final class LegoArtImageModel_iOS: LegoArtImageModel {
     var legoArtPublisher: AnyPublisher<LegoArtData, Never> {
         return legoArtSubject.eraseToAnyPublisher()
     }
+
+    var saveLegoArtCallback: ((String) -> Void)? = nil
 
     func convertLegoArtCGImage(
         contentURL: URL?,
@@ -32,6 +34,22 @@ final class LegoArtImageModel_iOS: LegoArtImageModel {
             legoArtSubject.send(LegoArtData(legoArt.exportCGImage(), legoArt.partsList))
         } else {
             legoArtSubject.send(LegoArtData())
+        }
+    }
+
+    func saveLegoArt(legoArtCGImage: CGImage?, callback: @escaping (String) -> Void) {
+        self.saveLegoArtCallback = callback
+        if let legoArtCGImage = legoArtCGImage {
+            UIImageWriteToSavedPhotosAlbum(UIImage(cgImage: legoArtCGImage), self,
+                                           #selector(saveComplete(_:didFinishSavingWithError:contextInfo:)), nil)
+        }
+    }
+
+    @objc func saveComplete(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            saveLegoArtCallback?(error.localizedDescription)
+        } else {
+            saveLegoArtCallback?("Succeed🎉")
         }
     }
 }

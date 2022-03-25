@@ -11,6 +11,9 @@ import LegoArtFilter
 struct ContentView: View {
     @StateObject var viewModel: ContentViewModel
 
+    @State var showingAlert: Bool = false
+    @State var message: String = ""
+
     var body: some View {
         VStack {
             Title()
@@ -54,6 +57,13 @@ struct ContentView: View {
             FileSelectButton_iOS { url in
                 viewModel.contentURL = url
             }
+            FileSaveButton_iOS($showingAlert, $message) {
+                viewModel.saveLegoArt { message in
+                    showingAlert = true
+                    self.message = message
+                }
+            }
+            .disabled(viewModel.legoArtCGImage == nil)
 #elseif os(macOS)
             FileSelectButton_macOS { url in
                 viewModel.contentURL = url

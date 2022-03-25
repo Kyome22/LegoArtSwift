@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import CoreGraphics
 import LegoArtFilter
 
 protocol LegoArtImageModel {
@@ -21,4 +22,10 @@ protocol LegoArtImageModel {
     func convertLegoArtCGImage(contentURL: URL?, studType: StudType, maxStud: Int)
 
     func saveLegoArt(saveURL: URL, legoArtCGImage: CGImage?)
+    func saveLegoArt(legoArtCGImage: CGImage?, callback: @escaping (String) -> Void)
+}
+
+extension LegoArtImageModel {
+    func saveLegoArt(saveURL: URL, legoArtCGImage: CGImage?) {}
+    func saveLegoArt(legoArtCGImage: CGImage?, callback: @escaping (String) -> Void) {}
 }

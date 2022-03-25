@@ -61,4 +61,8 @@ final class ContentViewModel: ObservableObject {
     func saveLegoArt(saveURL: URL) {
         model.saveLegoArt(saveURL: saveURL, legoArtCGImage: legoArtCGImage)
     }
+
+    func saveLegoArt(callback: @escaping (String) -> Void) {
+        model.saveLegoArt(legoArtCGImage: legoArtCGImage, callback: callback)
+    }
 }
