@@ -18,7 +18,6 @@ struct FileSelectButton_macOS: View {
     var body: some View {
         Button("Select Image") {
             let panel = NSOpenPanel()
-            panel.directoryURL = URL(fileURLWithPath: "\(NSHomeDirectory())/Desktop")
             panel.allowedContentTypes = [UTType.png, UTType.jpeg]
             panel.canChooseDirectories = false
             panel.allowsMultipleSelection = false
