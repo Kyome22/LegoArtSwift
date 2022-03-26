@@ -26,14 +26,10 @@ final class LegoArtImageModel_iOS: NSObject, LegoArtImageModel {
         return saveLegoArtSubject.eraseToAnyPublisher()
     }
 
-    func convertLegoArtCGImage(
-        contentURL: URL?,
-        studType: StudType,
-        maxStud: Int
-    ) {
+    func convertLegoArtCGImage(contentURL: URL?, baseColor: CGColor, studType: StudType, maxStud: Int) {
         if let contentURL = contentURL,
            let uiImage = UIImage(contentsOfFile: contentURL.path),
-           let legoArt = LegoArtFilter(from: uiImage, studType: studType, maxStud: maxStud) {
+           let legoArt = LegoArtFilter(from: uiImage, baseColor: baseColor, studType: studType, maxStud: maxStud) {
             legoArtSubject.send(LegoArtData(legoArt.exportCGImage(), legoArt.partsList))
         } else {
             legoArtSubject.send(LegoArtData())

@@ -22,6 +22,7 @@ final class ContentViewModel: ObservableObject {
     let maxStudDefaultSelection: Int
 
     @Published var contentURL: URL? = nil
+    @Published var baseColor: CGColor = .black
     @Published var studType: StudType
     @Published var maxStud: Int
     @Published var legoArtCGImage: CGImage? = nil
@@ -41,13 +42,14 @@ final class ContentViewModel: ObservableObject {
         maxStudDefaultSelection = model.maxStudDefaultSelection
         maxStud = maxStudList[maxStudDefaultSelection]
 
-        $contentURL
-            .combineLatest($studType, $maxStud)
+        Publishers
+            .CombineLatest4($contentURL, $baseColor, $studType, $maxStud)
             .dropFirst()
-            .sink(receiveValue: { [weak self] (contentURL, studType, maxStud) in
-                self?.model.convertLegoArtCGImage(contentURL: contentURL,
-                                            studType: studType,
-                                            maxStud: maxStud)
+            .sink(receiveValue: { [weak self] values in
+                self?.model.convertLegoArtCGImage(contentURL: values.0,
+                                                  baseColor: values.1,
+                                                  studType: values.2,
+                                                  maxStud: values.3)
             })
             .store(in: &cancellables)
 

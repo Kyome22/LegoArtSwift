@@ -24,7 +24,7 @@ struct ContentView: View {
                 .padding(8)
             Buttons()
                 .padding(8)
-            DropDownMenus()
+            Options()
                 .padding(8)
             PartsTable(partsList: $viewModel.partsList,
                        digitNumber: $viewModel.digitNumber)
@@ -70,14 +70,14 @@ struct ContentView: View {
         }
     }
 
-    func DropDownMenus() -> some View {
-        VStack(alignment: .leading) {
+    func Options() -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            ColorPicker("Base Color:", selection: $viewModel.baseColor)
             StudTypeDropDownMenu(studTypeList: viewModel.studTypeList,
                                  defaultSelection: viewModel.studTypeDefaultSelection,
                                  didChange: { studType in
                 viewModel.studType = studType
             })
-                .padding(.bottom, 8)
             MaxStudDropDownMenu(maxStudList: viewModel.maxStudList,
                                 defaultSelection: viewModel.maxStudDefaultSelection,
                                 didChange: { maxStud in

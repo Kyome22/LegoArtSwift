@@ -22,10 +22,10 @@ final class LegoArtImageModel_macOS: LegoArtImageModel {
         return legoArtSubject.eraseToAnyPublisher()
     }
 
-    func convertLegoArtCGImage(contentURL: URL?, studType: StudType, maxStud: Int) {
+    func convertLegoArtCGImage(contentURL: URL?, baseColor: CGColor, studType: StudType, maxStud: Int) {
         if let contentURL = contentURL,
            let nsImage = NSImage(contentsOf: contentURL),
-           let legoArt = LegoArtFilter(from: nsImage, studType: studType, maxStud: maxStud) {
+           let legoArt = LegoArtFilter(from: nsImage, baseColor: baseColor, studType: studType, maxStud: maxStud) {
             legoArtSubject.send(LegoArtData(legoArt.exportCGImage(), legoArt.partsList))
         } else {
             legoArtSubject.send(LegoArtData())

@@ -123,14 +123,14 @@ public class LegoArtFilter {
                                         space: CGColorSpaceCreateDeviceRGB(),
                                         bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)
         else { return nil }
-        // fill black
-        let cgBlack = CGColor(gray: 0, alpha: 1)
-        cgContext.setFillColor(cgBlack)
+        // fill baseColor
+        cgContext.setFillColor(baseColor)
         cgContext.fill(rect)
         
         // draw studs
         let q = colorMap.count / w - 1
         let u = CGFloat(studPixelWidth)
+        let cgBlack = CGColor(gray: 0, alpha: 1)
         for i in (0 ..< colorMap.count) {
             let x = CGFloat(i % w) * (u + 1)
             let y = CGFloat(q - i / w) * (u + 1)

@@ -20,7 +20,7 @@ protocol LegoArtImageModel {
     var legoArtPublisher: AnyPublisher<LegoArtData, Never> { get }
     var saveLegoArtPublisher: AnyPublisher<String, Never> { get }
 
-    func convertLegoArtCGImage(contentURL: URL?, studType: StudType, maxStud: Int)
+    func convertLegoArtCGImage(contentURL: URL?, baseColor: CGColor, studType: StudType, maxStud: Int)
 
     func saveLegoArt(saveURL: URL, legoArtCGImage: CGImage?)
     func saveLegoArt(legoArtCGImage: CGImage?)
