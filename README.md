@@ -43,7 +43,8 @@ let legoArtFilter = LegoArtFilter(ciImage: CIImage,
 
 ### Demo
 
-Demonstration of LegoArtFilter in the Examples directory.
+`LegoArtSwiftDemo.xcodeproj` is a demonstration of LegoArtFilter in the Examples directory.
+You can build it Xcode.app (ver 13+).
 
 #### iOS
 
