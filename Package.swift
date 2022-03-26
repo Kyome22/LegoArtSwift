@@ -4,25 +4,37 @@
 import PackageDescription
 
 let package = Package(
-    name: "LegoArtFilter",
+    name: "LegoArtSwift",
     platforms: [
         .macOS(.v11),
         .iOS(.v14)
     ],
     products: [
         .library(
+            name: "LegoColors",
+            targets: ["LegoColors"]
+        ),
+        .library(
             name: "LegoArtFilter",
-            targets: ["LegoArtFilter"]),
-    ],
-    dependencies: [
-        .package(url: "https://github.com/Kyome22/LegoColors", .branch("main"))
+            targets: ["LegoArtFilter"]
+        )
     ],
     targets: [
         .target(
+            name: "LegoColors"
+        ),
+        .target(
             name: "LegoArtFilter",
-            dependencies: ["LegoColors"]),
+            dependencies: ["LegoColors"]
+        ),
+        .testTarget(
+            name: "LegoColorsTests",
+            dependencies: ["LegoColors"]
+        ),
         .testTarget(
             name: "LegoArtFilterTests",
-            dependencies: ["LegoArtFilter"]),
+            dependencies: ["LegoArtFilter"],
+            resources: [.process("Images")]
+        )
     ]
 )
