@@ -31,6 +31,7 @@ public class LegoArtFilter {
         if maxStud <= 0 { return nil }
         let (colorMap, count) = LegoArtFilter.getColorMap(from: ciImage,
                                                           baseColor: baseColor,
+                                                          studType: studType,
                                                           maxStud: maxStud)
         if colorMap.isEmpty { return nil }
         self.baseColor = baseColor
@@ -80,6 +81,7 @@ public class LegoArtFilter {
     private static func getColorMap(
         from ciImage: CIImage,
         baseColor: CGColor,
+        studType: StudType,
         maxStud: Int
     ) -> ([LegoColor], Int) {
         guard let studImage = CGImage.createStudImage(with: ciImage,
@@ -100,7 +102,13 @@ public class LegoArtFilter {
                 let r = CGFloat(rgbaData[4 * i]) / 255.0
                 let g = CGFloat(rgbaData[4 * i + 1]) / 255.0
                 let b = CGFloat(rgbaData[4 * i + 2]) / 255.0
-                let legoColor = LegoColor(r: r, g: g, b: b)
+                let legoColor: LegoColor
+                switch studType {
+                case .round, .roundPlate:
+                    legoColor = LegoRoundTileColor(r: r, g: g, b: b).rawValue
+                case .square, .squarePlate:
+                    legoColor = LegoSquareTileColor(r: r, g: g, b: b).rawValue
+                }
                 memo[key] = legoColor
                 return legoColor
             }

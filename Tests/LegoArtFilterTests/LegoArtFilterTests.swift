@@ -1,5 +1,12 @@
-import XCTest
+//
+//  LegoArtFilterTests.swift
+//
+//
+//  Created by Takuto Nakamura on 2022/04/06.
+//
+
 @testable import LegoArtFilter
+import XCTest
 
 final class LegoArtFilterTests: XCTestCase {
 
@@ -51,7 +58,10 @@ final class LegoArtFilterTests: XCTestCase {
         let legoArtFilter = LegoArtFilter(ciImage: ciImage)!
         let actual = legoArtFilter.partsList
         printPartsList(partsList: actual)
-        XCTAssertEqual(actual.count, 49)
+#if os(iOS)
+        XCTAssertEqual(actual.count, 30)
+#elseif os(macOS)
+        XCTAssertEqual(actual.count, 29)
+#endif
     }
-    
 }
